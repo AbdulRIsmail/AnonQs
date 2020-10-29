@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 /.pnp
+/src/styles/app.css
+/tailwind.js
 .pnp.js
 
 # testing
