@@ -56,11 +56,15 @@ export class Home extends Component {
 
         <div>
           {!authenticated ? (
-            <h1>Welcome</h1>
+            <div style={{textAlign: 'center'}}>
+              <h1>Welcome</h1>
+              <h1 className="text-red-600">Test</h1>
+              <p style={{color: 'white', fontSize: 18, width: 'calc(100% - 20%)', background: 'rgb(20, 20, 20)', padding: '20px 0', margin: '0 10px', display: 'inline-block', cursor: 'pointer', borderRadius: 6}}>Continue with Twitter</p>
+            </div>
           ) : (
             <div>
               <h1>You have login successfully!</h1>
-              <h2>Welcome {this.state.user.name}!</h2>
+              <h2 style={{color: 'rgb(56,56,56)'}}>Welcome <span style={{color: 'rgb(111, 196, 241)'}}>{this.state.user.name}</span>!</h2>
             </div>
           )}
         </div>
