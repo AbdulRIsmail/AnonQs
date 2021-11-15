@@ -47,5 +47,49 @@ app.use(cors({
 // setup the auth routes
 app.use('/auth', authRoutes);
 
+const Question = require('./models/question-model');
+const Answer = require('./models/answer-model');
+const User = require('./models/user-model');
+
+app.get('/questions/', async (req, res) => {
+  const document = await User.findOne({screenName: req.query.screenName})
+
+  if (document !== null) 
+    res.send(document.QNAS)
+  else
+    res.sendStatus(401)
+})
+
+
+app.get('/answers/', async (req, res) => {
+  const document = await User.findOne({screenName: req.query.screenName})
+
+  if (document !== null) 
+    res.send(document.QNAS)
+  else
+    res.sendStatus(401)
+})
+
+app.get('/ask/question', async  (req, res) => {
+  // const newQuestion = await new Question({
+  //   userID: '5fa063e90f07fa20f987407c',
+  //   question: 'What macbook would you recommend?',
+  // }).save();
+
+  // console.log(newQuestion)
+})
+
+app.post('/answer/question', async (req, res) => {
+  const { answer, questionId, screenName } = req.body
+
+  User.updateOne({screenName, "QNAS.id": questionId}, {"$set": {
+    "QNAS.$.answer": answer
+  }}, function(error, success) {
+    // console.log('Error:', error);
+    // console.log('Success', success);
+    if (success) res.sendStatus(200)
+  })
+})
+
 // connect to the express server
 app.listen(port, () => console.log(`Server is running on port ${port}!`));

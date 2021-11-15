@@ -6,7 +6,14 @@ const UserSchema = new Schema({
   name: String,
   screenName: String,
   twitterId: String,
-  profileImageUrl: String
+  profileImageUrl: String,
+  QNAS: [{
+    question: String,
+    answer: String,
+    questionDate: Date,
+    answerDate: Date,
+    id: String
+  }]
 });
 
 const User = mongoose.model('user', UserSchema);

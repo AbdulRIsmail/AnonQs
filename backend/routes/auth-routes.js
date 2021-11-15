@@ -24,6 +24,10 @@ router.get('/login/success', authCheck, (req, res) => {
       cookies: req.cookies
     });
   }
+
+  console.log('success login!')
+
+  // res.redirect(CLIENT_HOME_PAGE_URL);
 });
 
 // when login failed, send failed msg

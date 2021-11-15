@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Header from './Header';
+import Login from './Login';
+import Profile from './Profile';
+import Chat from './Chat';
 
 export class Home extends Component {
   static propTypes = {
@@ -15,9 +18,14 @@ export class Home extends Component {
 
   state = {
     user: {},
+    activeTab: 'Profile',
     error: null,
     authenticated: false
   };
+
+  switchTab = (tab) => {
+    this.setState({ activeTab: tab })
+  }
 
   componentDidMount() {
     fetch('http://localhost:4000/auth/login/success', {
@@ -49,28 +57,33 @@ export class Home extends Component {
   
 
   render() {
-    const { authenticated } = this.state;
+    const { authenticated, activeTab } = this.state;
     return (
       <div>
-        <Header authenticated={authenticated} handleNotAuthenticated={this._handleNotAuthenticated} />
-
         <div>
-          {!authenticated ? (
-            <div style={{textAlign: 'center'}}>
-              <h1>Welcome</h1>
-              <h1 className="text-red-600">Test</h1>
-              <p style={{color: 'white', fontSize: 18, width: 'calc(100% - 20%)', background: 'rgb(20, 20, 20)', padding: '20px 0', margin: '0 10px', display: 'inline-block', cursor: 'pointer', borderRadius: 6}}>Continue with Twitter</p>
+          {authenticated ? (
+          <div>
+              <Header switchTab={this.switchTab} />
+            
+              <div className="text-white text-center mt-24 text-3xl">
+                {activeTab === 'Profile' ? (
+                  <Profile screenName={this.state.user.screenName} />
+                ) : (
+                  <Chat screenName={this.state.user.screenName} />
+                )}
+              </div>
             </div>
           ) : (
-            <div>
-              <h1>You have login successfully!</h1>
-              <h2 style={{color: 'rgb(56,56,56)'}}>Welcome <span style={{color: 'rgb(111, 196, 241)'}}>{this.state.user.name}</span>!</h2>
-            </div>
+            <Login />
           )}
         </div>
       </div>
     )
   }
+
+// <Header authenticated={authenticated} handleNotAuthenticated={this._handleNotAuthenticated} />
+// <h2 style={{color: 'rgb(56,56,56)'}}>Welcome <span style={{color: 'rgb(111, 196, 241)'}}>{this.state.user.name}</span>!</h2> 
+// <p className="inline" onClick={this._handleLogoutClick}>Logout</p>
 
   _handleNotAuthenticated = () => {
     this.setState({ authenticated: false });
