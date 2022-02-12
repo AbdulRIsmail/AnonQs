@@ -1,8 +1,8 @@
+require('./config/passport-setup');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 4000;
 const passport = require('passport');
-const passportSetup = require('./config/passport-setup');
 const authRoutes = require('./routes/auth-routes');
 const keys = require('./config/keys');
 const cors = require('cors');
@@ -52,8 +52,10 @@ const Answer = require('./models/answer-model');
 const User = require('./models/user-model');
 
 app.get('/questions/', async (req, res) => {
+  console.log(req.query)
   const document = await User.findOne({screenName: req.query.screenName})
 
+  console.log(document)
   if (document !== null) 
     res.send(document.QNAS)
   else
@@ -71,12 +73,12 @@ app.get('/answers/', async (req, res) => {
 })
 
 app.get('/ask/question', async  (req, res) => {
-  // const newQuestion = await new Question({
-  //   userID: '5fa063e90f07fa20f987407c',
-  //   question: 'What macbook would you recommend?',
-  // }).save();
+  const newQuestion = await new Question({
+    userID: '620829e81615a5207f5eccd8',
+    question: 'What macbook would you recommend?',
+  }).save();
 
-  // console.log(newQuestion)
+  console.log(newQuestion)
 })
 
 app.post('/answer/question', async (req, res) => {
@@ -85,8 +87,6 @@ app.post('/answer/question', async (req, res) => {
   User.updateOne({screenName, "QNAS.id": questionId}, {"$set": {
     "QNAS.$.answer": answer
   }}, function(error, success) {
-    // console.log('Error:', error);
-    // console.log('Success', success);
     if (success) res.sendStatus(200)
   })
 })

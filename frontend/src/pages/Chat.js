@@ -5,7 +5,20 @@ import axios from 'axios';
 
 export class Chat extends Component {
   state = {
-    questions: []
+    questions: [
+      {
+        question: "What macbook would you recommend?",
+        date: '01/Jan/2022'
+      },
+      {
+        question: "Did you graduate?",
+        date: '02/Jan/2022'
+      },
+      {
+        question: "Do you have any pets?",
+        date: '03/Jan/2022'
+      },
+    ]
   }
 
   componentDidMount() {
@@ -17,7 +30,9 @@ export class Chat extends Component {
       } 
     })
     .then(res => {
+      console.log(res)
       res.data.forEach((e) => {
+        console.log(e)
         if (e.answer === '') this.setState({ questions: [...this.state.questions, e] })
       })
 
@@ -38,7 +53,7 @@ export class Chat extends Component {
   render() {
     const dataOutput = this.state.questions.map((obj, index) => {
       return (
-        <div className="mb-8" key={obj.id} id={`question_${index}`}>
+        <div style={{ marginBottom: 32 }} key={obj.id} id={`question_${index}`}>
           <Questions 
             question={obj.question} 
             date={obj.date} 

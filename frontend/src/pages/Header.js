@@ -13,8 +13,8 @@ export default class Header extends Component {
           </div>
           
           <div style={{justifyContent: 'flex-end'}}>
-            <img onClick={() => this.props.switchTab('Profile')} className="inline mr-6" src={profileIcon} width='25px' style={{cursor: 'pointer'}} alt="Profile Button" />
-            <img onClick={() => this.props.switchTab('Chat')} className="inline mr-6" src={chatIcon} width='25px' style={{cursor: 'pointer'}} alt="Chat Button" />
+            <img onClick={() => this.props.switchTab('Profile')} className="inline mr-6" src={profileIcon} width='25px' style={{cursor: 'pointer', marginRight: 18}} alt="Profile Button" />
+            <img onClick={() => this.props.switchTab('Chat')} className="inline mr-6" src={chatIcon} width='25px' style={{cursor: 'pointer', marginRight: 18}} alt="Chat Button" />
             <img onClick={this._handleLogoutClick} className="inline" src={logoutIcon} width='25px' style={{cursor: 'pointer'}} alt="Logout Button" />
           </div>
         </div>

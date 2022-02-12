@@ -11,13 +11,13 @@ export class Questions extends Component {
           </div> 
 
           <div>
-            <h1 className="ml-4" style={{fontSize: 16, fontWeight: '500', letterSpacing: 1}}>Anonymous</h1>
-            <h1 className="ml-4" style={{fontSize: 13, color: 'gray', letterSpacing: 1}}>{this.props.date}</h1>
+            <h1 style={{fontSize: 16, fontWeight: '500', letterSpacing: 1, marginLeft: 16}}>Anonymous</h1>
+            <h1 style={{fontSize: 13, color: 'gray', letterSpacing: 1, marginLeft: 16}}>{this.props.date}</h1>
           </div>          
         </div>
 
         <div className="sm:mt-4" style={{textAlign: 'left'}}>
-          <p style={{fontSize: 16, display: 'inline-block'}}>{this.props.question}</p>
+          <p style={{fontSize: 16, display: 'inline-block', color: 'gray'}}>{this.props.question}</p>
         </div>
 
         <hr className="mt-2" style={{background: '#232529', borderColor: '#232529'}} />
