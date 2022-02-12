@@ -12,6 +12,7 @@
 
 ### How to setup
 First clone this project
+*project not completed*
 
 Backend
 1. `cd backend`
