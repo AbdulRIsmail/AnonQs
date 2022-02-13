@@ -3,7 +3,7 @@
 
 *Instructions on how to setup is below*
 
-## Demo of the appliaction
+## Demo of the application
 <img width="625" alt="image" src="https://user-images.githubusercontent.com/39646629/153728831-7a570867-8324-415e-85ff-5116669a6961.png">
 <img width="658" alt="image" src="https://user-images.githubusercontent.com/39646629/153730117-3f18a7c1-56ee-4c75-bf86-54ea892ab25d.png">
 <img width="373" alt="image" src="https://user-images.githubusercontent.com/39646629/153729048-582f45bf-a5d0-4aef-9713-de602c34a14e.png">
